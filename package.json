@@ -15,7 +15,8 @@
   },
   "dependencies": {
     "loopback-connector": "1.x",
-    "riakjs": "mostlyserious/riak-js.git#metacomms-2.0"
+    "riakjs": "mostlyserious/riak-js.git#metacomms-2.0",
+    "deep-extend": "~0.3.2"
   },
   "devDependencies": {
     "loopback-datasource-juggler": "^2.10.2",
