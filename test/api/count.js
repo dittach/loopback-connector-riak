@@ -32,6 +32,10 @@ describe("api/count", function(){
     yokozunaStub.yieldsAsync( null, { numFound: anticipatedNumberOfResults } );
   });
 
+  afterEach(function(){
+    yokozunaStub.restore();
+  });
+
   it("searches a yokozuna index named after the snake case bucket name", function(done){
     datasource.connector.count(modelName, function(error, numberFound){
       var args = yokozunaStub.lastCall.args;
