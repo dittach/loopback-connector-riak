@@ -9,11 +9,11 @@ describe("api/count", function(){
     BlackCat: {
       properties: {
         plaything: {
-          Type: String
+          type: String
         },
 
         playmate: {
-          Type: String
+          type: String
         }
       }
     }
