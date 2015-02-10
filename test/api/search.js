@@ -25,6 +25,34 @@ describe("api/search", function(){
     yokozunaStub.restore();
   });
 
+  describe("with a limit, order, and skip in the conditions", function(){
+    beforeEach(function(){
+      yokozunaStub.yieldsAsync(null, { status: 200, docs: anticipatedDocs }, { statusCode: 200 });
+
+      conditions.limit = 43;
+      conditions.order = [ "size asc", "date desc" ];
+      conditions.skip  = 2;
+    });
+
+    afterEach(function(){
+      delete(conditions.limit);
+      delete(conditions.order);
+      delete(conditions.skip);
+    });
+
+    it("passes the values as 'rows', 'sort', and 'start' options to yokozuna", function(done){
+      datasource.connector.search(modelName, conditions, function(error, docs){
+        var yokozunaArgs = yokozunaStub.lastCall.args;
+
+        assert.equal(yokozunaArgs[2].rows, conditions.limit);
+        assert.equal(yokozunaArgs[2].sort, conditions.order.join(", "));
+        assert.equal(yokozunaArgs[2].skip, conditions.start);
+
+        done();
+      });
+    });
+  });
+
   describe("when RiakJS throws an error", function(){
     beforeEach(function(){
       yokozunaStub.yieldsAsync("we lost all the schnozzbarkus while performing the search");
