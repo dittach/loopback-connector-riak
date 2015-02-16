@@ -48,7 +48,7 @@ describe("api/count", function(){
   it("searches with a solr query version of the provided conditions", function(done){
     datasource.connector.count(modelName, function(error, numberFound){
       var args = yokozunaStub.lastCall.args;
-      assert.equal(args[1], "plaything:taco AND playmate:orangutan");
+      assert.equal(args[1], "(plaything:taco) AND (playmate:orangutan)");
 
       done();
     }, { plaything: "taco", playmate: "orangutan" });
