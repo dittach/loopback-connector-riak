@@ -44,9 +44,10 @@ describe("api/updateAttributes", function(){
   });
 
   describe("if the document doesn't exist", function(){
-    it("throws an error", function(done){
+    it("returns emptiness", function(done){
       datasource.connector.updateAttributes(modelName, id, updateData, function(error, document){
-        assert.ok(error);
+        assert.ok(!error);
+        assert.ok(!document);
 
         done();
       });
