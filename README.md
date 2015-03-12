@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/dittach/loopback-connector-riak.svg?branch=master)](https://travis-ci.org/dittach/loopback-connector-riak)
+
 ## loopback-connector-riak
 
 Riak connector for loopback-datasource-juggler.  This adapter is based on the fine work of the RiakJS library (specifically the [Riak 2.0-friendly branch of RiakJS ](https://github.com/mostlyserious/riak-js/tree/metacomms-2.0), which Dittach has forked until it's merged into RiakJS mainline.)
