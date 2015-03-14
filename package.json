@@ -1,6 +1,6 @@
 {
   "name": "loopback-connector-riak",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "LoopBack Riak Connector",
   "keywords": [
     "StrongLoop",
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "loopback-connector": "1.x",
-    "riakjs": "dittach/riak-js.git#metacomms-2.0",
+    "riak-js": "https://github.com/dittach/riak-js/tarball/metacomms-2.0",
     "deep-extend": "~0.3.2",
     "node-uuid": "~1.4.2"
   },
