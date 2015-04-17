@@ -11,11 +11,12 @@
   ],
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/api/*"
+    "test": "mocha --timeout 5000"
   },
   "dependencies": {
+    "bluebird": "~2.9.10",
     "loopback-connector": "1.x",
-    "riak-js": "https://github.com/dittach/riak-js/tarball/metacomms-2.0",
+    "riak-js": "https://github.com/dittach/riak-js/tarball/yokozuna_support",
     "deep-extend": "~0.3.2",
     "node-uuid": "~1.4.2"
   },
@@ -24,7 +25,8 @@
     "loopback-datasource-juggler": "^2.10.2",
     "mocha": "~1.20.1",
     "rc": "~0.5.5",
-    "sinon": "~1.12.2"
+    "sinon": "~1.12.2",
+    "should": "^5.0.0"
   },
   "repository": {
     "type": "git",
