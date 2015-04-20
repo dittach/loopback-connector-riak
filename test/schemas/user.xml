@@ -2,9 +2,13 @@
 <schema name="user" version="1.5">
   <fields>
     <!-- Start customized fields here -->
-    <field name="id"   type="string_ci" indexed="true" stored="true" />
-    <field name="name" type="string_ci" indexed="true" stored="true" />
-    <field name="vip"  type="boolean"   indexed="true" stored="true" />
+    <field name="id"       type="string_ci" indexed="true" stored="true" />
+    <field name="name"     type="string_ci" indexed="true" stored="true" />
+    <field name="birthday" type="tdate"     indexed="true" stored="true" />
+    <field name="role"     type="string_ci" indexed="true" stored="true" />
+    <field name="vip"      type="boolean"   indexed="true" stored="true" />
+    <field name="seq"      type="tint"      indexed="true" stored="true" />
+    <field name="order"    type="tint"      indexed="true" stored="true" />
 
     <!-- Riak datatypes default fields-->
     <field name="counter" type="int"    indexed="true" stored="true" multiValued="false" />
