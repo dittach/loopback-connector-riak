@@ -11,7 +11,7 @@
   ],
   "main": "index.js",
   "scripts": {
-    "test": "mocha --timeout 5000"
+    "test": "mocha --timeout 60000"
   },
   "dependencies": {
     "bluebird": "~2.9.10",
