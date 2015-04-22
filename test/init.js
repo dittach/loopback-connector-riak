@@ -33,6 +33,15 @@ global.getDataSource = global.getSchema = function (options) {
     }, 8000); // yes, this makes the tests ridiculously slow
   }
 
+  var originalCount = db.connector.count;
+  db.connector.count = function(){
+    var args = arguments;
+
+    setTimeout(function(){
+      originalCount.apply(db.connector, args);
+    }, 8000); // yes, this makes the tests ridiculously slow
+  }
+
   return db;
 };
 
