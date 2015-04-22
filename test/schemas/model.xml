@@ -3,12 +3,12 @@
   <fields>
     <!-- Start customized fields here -->
     <field name="id"   type="string_ci" indexed="true" stored="true" />
-    <field name="str"  type="string_ci" indexed="true" stored="true" />
-    <field name="date" type="tdate"     indexed="true" stored="true" />
-    <field name="num"  type="tint"      indexed="true" stored="true" />
-    <field name="bool" type="boolean"   indexed="true" stored="true" />
-    <field name="list" type="boolean"   indexed="true" stored="true" />
-    <field name="arr"  type="string"    indexed="true" stored="true" multiValued="true" />
+    <field name="str"  type="string_ci" indexed="true" />
+    <field name="date" type="tdate"     indexed="true" />
+    <field name="num"  type="tint"      indexed="true" />
+    <field name="bool" type="boolean"   indexed="true" />
+    <field name="list" type="boolean"   indexed="true" />
+    <field name="arr"  type="string"    indexed="true" multiValued="true" />
 
     <!-- Riak datatypes default fields-->
     <field name="counter" type="int"    indexed="true" stored="true" multiValued="false" />
