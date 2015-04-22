@@ -2,6 +2,7 @@
 <schema name="user" version="1.5">
   <fields>
     <!-- Start customized fields here -->
+    <field name="id"   type="string_ci" indexed="true" stored="true" />
     <field name="str"  type="string_ci" indexed="true" stored="true" />
     <field name="date" type="tdate"     indexed="true" stored="true" />
     <field name="num"  type="tint"      indexed="true" stored="true" />
