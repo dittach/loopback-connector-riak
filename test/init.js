@@ -86,7 +86,21 @@ var prepareBucketForSearching = function(db, bucketName, callback){
 global.prepareDatabaseForTests = function(prepareCallback){
   var db = getSchema();
 
-  async.each([ "Model", "User", "Person" ], function(bucketName, callback){
+  async.each([
+    "Model",
+    "User",
+    "Person",
+    "Book",
+    "Chapter",
+    "Author",
+    "Reader",
+    "Physician",
+    "Patient",
+    "Appointment",
+    "Address",
+    "Category",
+    "Picture"
+  ], function(bucketName, callback){
     prepareBucketForSearching(db, bucketName, callback);
   }, prepareCallback);
 }
