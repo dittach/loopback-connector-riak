@@ -9,6 +9,9 @@
     <field name="vip"      type="boolean"   indexed="true" />
     <field name="seq"      type="string_ci" indexed="true" />
     <field name="order"    type="tint"      indexed="true" />
+    <field name="email"    type="string"    indexed="true" />
+    <field name="password" type="string"    indexed="true" />
+    <field name="state"    type="string"    indexed="true" />
 
     <!-- Riak datatypes default fields-->
     <field name="counter" type="int"    indexed="true" stored="true" multiValued="false" />
