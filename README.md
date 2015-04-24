@@ -73,4 +73,25 @@ npm run test
 
 ## Release notes
 
-  * 0.0.5 - First open-source release. It's "working well for us."
+* 0.0.5 - First open-source release. It's "working well for us."
+
+## Testing
+
+### Unit tests
+The adapter has its own unit tests that don't hit the database.  To run those:
+
+```shell
+$ mocha test/api/*
+```
+
+There are also tests pulled in from loopback.  These *do* hit the database and they're written in a very SQL-oriented, ACID way that makes testing eventually consistent databases really difficult.  As a result we had to put a bunch of setTimeout statements in the tests to accomodate for indeterminate delays in things like populating indexes, etc.  This makes the test suite very slow.
+
+While we've done our best to reset the state each time the tests are run, the recommendation is to nuke your Riak data entirely before running these tests with a rm -rf.  That directory is usually /var/lib/riak on Linux.
+
+There are some tests that in the loopback suite will never pass such as the ones that verify that IDs are always integers.  In Riak keys are strings. ¯\_(ツ)_/¯
+
+These tests can be run with:
+
+```shell
+$ mocha --timeout 60000
+```
