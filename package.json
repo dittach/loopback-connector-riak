@@ -1,6 +1,6 @@
 {
   "name": "loopback-connector-riak",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "LoopBack Riak Connector",
   "keywords": [
     "StrongLoop",
