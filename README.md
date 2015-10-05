@@ -2,7 +2,7 @@
 
 ## loopback-connector-riak
 
-Riak connector for loopback-datasource-juggler.  This adapter is based on the fine work of the RiakJS library (specifically the [Riak 2.0-friendly branch of RiakJS ](https://github.com/mostlyserious/riak-js/tree/metacomms-2.0), which Dittach has forked until it's merged into RiakJS mainline.)
+Riak connector for loopback-datasource-juggler.  This adapter is based on the [official Basho Riak client library](https://github.com/basho/riak-nodejs-client).
 
 This adapter makes heavy use of Yokozuna, the Solr-backed search features of Riak 2.  It probably won't work with Riak 1.x at all.
 
@@ -15,31 +15,18 @@ The Riak connector can be configured much like any other Loopback connector usin
 ```javascript
 {
   "db": {
-    "name":      "db",
-    "debug":     true,
-    "host":      "db.example.com"
-    "port":      8098,
-    "connector": "riak"
+    "name": "db",
+    "connector": "riak",
+    "host": [
+      "riak1.local.foo.com:8087",
+      "riak2.local.foo.com:8087",
+      "riak3.local.foo.com:8087",
+      "riak4.local.foo.com:8087",
+      "riak5.local.foo.com:8087"
+    ]
   }
 }
 ```
-
-Since Riak doesn't have a concept of databases, a prefix for buckets can be useful (if, for example, you want to use the same Riak instance for both test and development data.)  Here's how to specify a "Test" bucket prefix in your test datasources json file:
-
-```javascript
-{
-  "db": {
-    "name":         "db",
-    "debug":        false,
-    "host":         "127.0.0.1",
-    "port":         8098,
-    "bucketPrefix": "Test",
-    "connector":    "riak"
-  }
-}
-```
-
-Your buckets and indexes will then be created with a Test prefix ("TestUser", "TestPost", etc.)
 
 ### Riak-oriented model configuration
 
@@ -61,11 +48,9 @@ Your Loopback models can provide some Riak-specific configuration options.  Here
 
 npm run test
 
-## Things that aren't implemented
+## Things that aren't implemented yet
 
 * bucket types
-* 'not like' searches
-* probably other things that we don't realize exist in Riak/StrongLoop - let us know
 
 ## Warnings
 
@@ -73,7 +58,8 @@ npm run test
 
 ## Release notes
 
-* 0.0.5 - First open-source release. It's "working well for us."
+* 0.1.5 - Currently in production over at Dittach. Good test coverage.
+* 0.0.5-0.1.0 - Improvements to test coverage, feature support, Node v0.12+ support.
 
 ## Testing
 
