@@ -1,8 +1,13 @@
 language: node_js
+sudo: required
 node_js:
   - "0.12"
 services:
   - riak
 script:
+  - sudo service riak stop
+  - sleep 10
+  - sudo rm -rf /var/lib/riak/*
+  - sudo service riak start
   - sleep 30
   - mocha --timeout 60000
