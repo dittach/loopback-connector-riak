@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<schema name="account" version="1.5">
+<schema name="assembly" version="1.5">
   <fields>
     <!-- Start customized fields here -->
-    <field name="id"           type="string_ci" indexed="true" stored="true" />
-    <field name="accountNo"    type="string_ci" indexed="true" stored="true" />
-    <field name="supplierName" type="string_ci" indexed="true" />
+    <field name="id"   type="string_ci" indexed="true" stored="true" />
+    <field name="name" type="string_ci" indexed="true" stored="true" />
 
     <!-- Riak datatypes default fields-->
     <field name="counter" type="int"    indexed="true" stored="true" multiValued="false" />

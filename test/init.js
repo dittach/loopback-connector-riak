@@ -129,7 +129,10 @@ global.prepareDatabaseForTests = function(prepareCallback){
     "Account",
     "ArticleTagName",
     "Post",
-    "AccessToken"
+    "AccessToken",
+    "Assembly",
+    "AssemblyPart",
+    "Part"
   ], function(bucketName, callback){
     prepareBucketForSearching(db, bucketName, callback);
   }, prepareCallback);
