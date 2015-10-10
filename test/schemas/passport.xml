@@ -6,6 +6,7 @@
     <field name="ownerId" type="string_ci" indexed="true" stored="true" />
     <field name="name"    type="string_ci" indexed="true" />
     <field name="notes"   type="string_ci" indexed="true" />
+    <field name="number"  type="string_ci" indexed="true" />
 
     <!-- Riak datatypes default fields-->
     <field name="counter" type="int"    indexed="true" stored="true" multiValued="false" />
