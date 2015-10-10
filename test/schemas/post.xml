@@ -3,6 +3,7 @@
   <fields>
     <!-- Start customized fields here -->
     <field name="id"        type="string_ci"    indexed="true" stored="true" />
+    <field name="userId"    type="string_ci"    indexed="true" stored="true" />
     <field name="title"     type="string_ci"    indexed="true" />
     <field name="subject"   type="string_ci"    indexed="true" />
     <field name="content"   type="text_general" indexed="true" />

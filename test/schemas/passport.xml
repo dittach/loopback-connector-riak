@@ -2,9 +2,10 @@
 <schema name="address" version="1.5">
   <fields>
     <!-- Start customized fields here -->
-    <field name="id"    type="string_ci" indexed="true" stored="true" />
-    <field name="name"  type="string_ci" indexed="true" stored="true" />
-    <field name="notes" type="string_ci" indexed="true" stored="true" />
+    <field name="id"      type="string_ci" indexed="true" stored="true" />
+    <field name="ownerId" type="string_ci" indexed="true" stored="true" />
+    <field name="name"    type="string_ci" indexed="true" />
+    <field name="notes"   type="string_ci" indexed="true" />
 
     <!-- Riak datatypes default fields-->
     <field name="counter" type="int"    indexed="true" stored="true" multiValued="false" />
