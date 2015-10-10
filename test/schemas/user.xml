@@ -7,7 +7,7 @@
     <field name="birthday" type="tdate"     indexed="true" />
     <field name="role"     type="string_ci" indexed="true" />
     <field name="vip"      type="boolean"   indexed="true" />
-    <field name="seq"      type="tint"      indexed="true" />
+    <field name="seq"      type="string_ci" indexed="true" />
     <field name="order"    type="tint"      indexed="true" />
     <field name="email"    type="string"    indexed="true" />
     <field name="password" type="string"    indexed="true" />
