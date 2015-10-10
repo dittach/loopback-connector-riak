@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<schema name="user" version="1.5">
+<schema name="attachment" version="1.5">
   <fields>
     <!-- Start customized fields here -->
-    <field name="id"       type="string_ci" indexed="true" stored="true" />
-    <field name="name"     type="string_ci" indexed="true" />
-    <field name="birthday" type="tdate"     indexed="true" />
-    <field name="role"     type="string_ci" indexed="true" />
-    <field name="vip"      type="boolean"   indexed="true" />
-    <field name="seq"      type="tint"      indexed="true" />
-    <field name="order"    type="tint"      indexed="true" />
-    <field name="email"    type="string"    indexed="true" />
-    <field name="password" type="string"    indexed="true" />
-    <field name="state"    type="string"    indexed="true" />
+    <field name="id"      type="string"    indexed="true" stored="true" />
+    <field name="ttl"     type="tint"      indexed="true" />
+    <field name="created" type="tdate"     indexed="true" />
+    <field name="userId"  type="string_ci" indexed="true" stored="true" />
 
     <!-- Riak datatypes default fields-->
     <field name="counter" type="int"    indexed="true" stored="true" multiValued="false" />
@@ -59,24 +53,5 @@
     <fieldType name="int"     class="solr.TrieIntField"  precisionStep="0" positionIncrementGap="0"/>
     <fieldType name="tint"    class="solr.TrieIntField"  precisionStep="8" positionIncrementGap="0"/>
     <fieldType name="tdate"   class="solr.TrieDateField" precisionStep="6" positionIncrementGap="0"/>
-
-    <!-- A general text field that has reasonable, generic
-    cross-language defaults: it tokenizes with StandardTokenizer,
-    removes stop words from case-insensitive "stopwords.txt" (empty by
-    default), and down cases.  At query time only, it also applies
-    synonyms. -->
-    <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100">
-      <analyzer type="index">
-        <tokenizer class="solr.StandardTokenizerFactory"/>
-        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" />
-        <filter class="solr.LowerCaseFilterFactory"/>
-      </analyzer>
-      <analyzer type="query">
-        <tokenizer class="solr.StandardTokenizerFactory"/>
-        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" />
-        <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
-        <filter class="solr.LowerCaseFilterFactory"/>
-      </analyzer>
-    </fieldType>
   </types>
 </schema>

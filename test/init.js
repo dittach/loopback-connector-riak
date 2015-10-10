@@ -45,9 +45,13 @@ global.getDataSource = global.getSchema = function (options) {
   return db;
 };
 
+var camelCaseToSnakeCase = function(str){
+  return str.replace(/([A-Z])/g, function($1){return "_"+$1.toLowerCase();}).replace(/^_/, "");
+}
+
 var prepareBucketForSearching = function(db, bucketName, callback){
-  var indexName = bucketName.toLowerCase();
-  var yz = db.connector.db.yokozuna;
+  var indexName = camelCaseToSnakeCase(bucketName);
+  var yz = db.adapter.db;
 
   var schemaXML = fs.readFileSync("./test/schemas/" + indexName + ".xml").toString('utf8');
 
@@ -57,19 +61,33 @@ var prepareBucketForSearching = function(db, bucketName, callback){
   // solr and solr is lucene, the interactions between riak and solr
   // take indeterminate amounts of time and we have to basically give
   // plennntttty of time for them to get in sync when we make changes
-  yz.createSchema(indexName, schemaXML, function(){
+  yz.storeSchema({
+    schemaName: indexName,
+    schema:     schemaXML
+  }, function(){
     console.log("destroying '", indexName, "' index...");
-    yz.disassociateIndexFromBucket(bucketName, function(){
+    yz.storeBucketProps({
+      bucket:    bucketName,
+      searchIndex: "__dont_index__"
+    }, function(){
       setTimeout(function(){
-        yz.destroyIndex(indexName, function(){
+        yz.deleteIndex({
+          indexName: indexName
+        }, function(){
           setTimeout(function(){
             console.log("creating '", indexName, "' index...");
 
-            yz.createIndex(indexName, indexName, function(){
+            yz.storeIndex({
+              indexName:  indexName,
+              schemaName: indexName
+            }, function(){
               setTimeout(function(){
                 console.log("associating the '", indexName, "' index with the '", bucketName, "' bucket...");
 
-                yz.associateIndexWithBucket(indexName, bucketName, function(){
+                yz.storeBucketProps({
+                  bucket:    bucketName,
+                  searchIndex: indexName
+                }, function(){
                   setTimeout(function(){
                     callback();
                   }, 5000);
@@ -99,7 +117,19 @@ global.prepareDatabaseForTests = function(prepareCallback){
     "Appointment",
     "Address",
     "Category",
-    "Picture"
+    "Picture",
+    "PictureLink",
+    "Item",
+    "Passport",
+    "Supplier",
+    "Article",
+    "TagName",
+    "Job",
+    "List",
+    "Account",
+    "ArticleTagName",
+    "Post",
+    "AccessToken"
   ], function(bucketName, callback){
     prepareBucketForSearching(db, bucketName, callback);
   }, prepareCallback);

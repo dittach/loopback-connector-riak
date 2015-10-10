@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<schema name="user" version="1.5">
+<schema name="address" version="1.5">
   <fields>
     <!-- Start customized fields here -->
-    <field name="id"       type="string_ci" indexed="true" stored="true" />
-    <field name="name"     type="string_ci" indexed="true" />
-    <field name="birthday" type="tdate"     indexed="true" />
-    <field name="role"     type="string_ci" indexed="true" />
-    <field name="vip"      type="boolean"   indexed="true" />
-    <field name="seq"      type="tint"      indexed="true" />
-    <field name="order"    type="tint"      indexed="true" />
-    <field name="email"    type="string"    indexed="true" />
-    <field name="password" type="string"    indexed="true" />
-    <field name="state"    type="string"    indexed="true" />
+    <field name="id"    type="string_ci" indexed="true" stored="true" />
+    <field name="name"  type="string_ci" indexed="true" stored="true" />
+    <field name="notes" type="string_ci" indexed="true" stored="true" />
 
     <!-- Riak datatypes default fields-->
     <field name="counter" type="int"    indexed="true" stored="true" multiValued="false" />
