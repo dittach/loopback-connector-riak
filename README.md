@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/dittach/loopback-connector-riak.svg?branch=master)](https://travis-ci.org/dittach/loopback-connector-riak)
+[![Build Status](https://semaphoreci.com/api/v1/projects/58f74bc7-9070-4e73-8629-faf6833f94ab/566632/badge.svg)](https://semaphoreci.com/dittach/loopback-connector-riak)
 
 ## loopback-connector-riak
 
