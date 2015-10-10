@@ -51,6 +51,8 @@ npm run test
 ## Things that aren't implemented yet
 
 * bucket types
+* 'include' filter support is experimental
+* relational features such as hasMany, belongsTo, hasManyAndBelongsTo, are not supported as Riak is not a relational database (there is a chance they will work, but they are not tested)
 
 ## Warnings
 
@@ -58,25 +60,15 @@ npm run test
 
 ## Release notes
 
-* 0.1.5 - Currently in production over at Dittach. Good test coverage.
-* 0.0.5-0.1.0 - Improvements to test coverage, feature support, Node v0.12+ support.
+* 1.0.0 Currently in production over at Dittach. Tests are passing.
+* 0.1.x Improvements to test coverage, feature support, Node v0.12+ support.
+* 0.0.x Proof-of-concept releases
 
 ## Testing
 
-### Unit tests
-The adapter has its own unit tests that don't hit the database.  To run those:
-
-```shell
-$ mocha test/api/*
-```
-
-There are also tests pulled in from loopback.  These *do* hit the database and they're written in a very SQL-oriented, ACID way that makes testing eventually consistent databases really difficult.  As a result we had to put a bunch of setTimeout statements in the tests to accomodate for indeterminate delays in things like populating indexes, etc.  This makes the test suite very slow.
+Tests pulled in from the Loopback test suite.  These tests hit the database and they're written in a very SQL-oriented, ACID way that makes testing eventually consistent databases really difficult.  As a result we had to put a bunch of delays statements in the tests to accomodate for Riak's eventual consistency in things like populating indexes, etc.  This unfortunately makes the test suite very slow.
 
 While we've done our best to reset the state each time the tests are run, the recommendation is to nuke your Riak data entirely before running these tests with a rm -rf.  That directory is usually /var/lib/riak on Linux.
-
-There are some tests that in the loopback suite will never pass such as the ones that verify that IDs are always integers.  In Riak keys are strings. ¯\_(ツ)_/¯
-
-These tests can be run with:
 
 ```shell
 $ mocha --timeout 60000
