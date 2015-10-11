@@ -6,6 +6,14 @@ Riak connector for loopback-datasource-juggler.  This adapter is based on the [o
 
 This adapter makes heavy use of Yokozuna, the Solr-backed search features of Riak 2.  It probably won't work with Riak 1.x at all.
 
+Yokozuna support means that you get crazy fast full-text searches that scale and shard transparently across your Riak nodes.
+
+## Requirements
+
+* Riak 2.x with Riak Search 2.0 enabled
+* Node.js v0.12+
+* Relational queries aren't in your technical requirements. Use a relational database. If so, Loopback supports multiple datasources, so maybe mix and match?
+
 ## Customizing Riak configuration
 
 The Riak connector can be configured much like any other Loopback connector using the datasources JSON files.
@@ -44,10 +52,6 @@ Your Loopback models can provide some Riak-specific configuration options.  Here
 ...
 ```
 
-## Running tests
-
-npm run test
-
 ## Things that aren't implemented yet
 
 * bucket types
@@ -57,6 +61,7 @@ npm run test
 ## Warnings
 
 * Some things that are normal in other databases are expensive with Riak and this connector doesn't try to hide any of that, although it does try to take the shortest path (like looking up by key whenever possible.)
+* Yokozuna / Riak Search 2.0 indexes are currently challenging to migrate. The Riak team have been promising tooling to make this easier for a while now. https://github.com/basho/yokozuna/issues/130
 
 ## Release notes
 
