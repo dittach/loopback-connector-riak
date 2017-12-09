@@ -31,7 +31,15 @@ The Riak connector can be configured much like any other Loopback connector usin
       "riak3.local.foo.com:8087",
       "riak4.local.foo.com:8087",
       "riak5.local.foo.com:8087"
-    ]
+    ],
+    "node_config" : {           //optional riak node config
+      "maxConnections": 128,
+      "minConnections": 1,
+      "idleTimeout": 10000,
+      "connectionTimeout": 3000,
+      "requestTimeout": 5000,
+      "cork": true
+    }
   }
 }
 ```
@@ -65,6 +73,7 @@ Your Loopback models can provide some Riak-specific configuration options.  Here
 
 ## Release notes
 
+* 1.1.0 Added additional node config params to data source & updated dependency packages.
 * 1.0.0 Currently in production over at Dittach. Tests are passing.
 * 0.1.x Improvements to test coverage, feature support, Node v0.12+ support.
 * 0.0.x Proof-of-concept releases
