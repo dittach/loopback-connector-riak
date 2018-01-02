@@ -1,4 +1,4 @@
-var async = require('async');
+var async = require('neo-async');
 var fs = require('fs');
 
 module.exports = require('should');
